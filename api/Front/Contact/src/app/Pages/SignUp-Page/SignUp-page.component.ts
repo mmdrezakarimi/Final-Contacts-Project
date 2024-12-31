@@ -1,3 +1,4 @@
+import { SignUpModel } from './../../Model/SingUpModel';
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 
@@ -13,6 +14,10 @@ export class SignUpPageComponent{
     password: new FormControl('')
   });
   SignUp(){
-
+      let data: SignUpModel = {
+        username: this.signUpform.value.username as string,
+        password: this.signUpform.value.password as string
+      }
+      console.log(data);
   };
 }
