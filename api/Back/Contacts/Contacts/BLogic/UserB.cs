@@ -14,7 +14,7 @@ namespace Contacts.BLogic
     {
      
 
-        public BResultM<int> SignIn(UserSignInM model)
+        public BResultM<int> SignInB(UserSignInM model)
         {
 
             BResultM<int> result = new();
@@ -80,7 +80,7 @@ namespace Contacts.BLogic
 
         }
 
-        public BResultM<int> SignUP(UserSignUPM model)
+        public BResultM<int> SignUpB(UserSignUPM model)
         {
             byte[] password = MD5.HashData(Encoding.UTF8.GetBytes(model.Password));
 
@@ -102,7 +102,7 @@ namespace Contacts.BLogic
                 Data = id
             };
         }
-        public BResultM<UserProfileM> Profile(int userId)
+        public BResultM<UserProfileM> ProfileB(int userId)
         {
           UserTable info = new UserD().GetUserDetails(userId);
 

@@ -15,6 +15,7 @@ namespace Contacts.DAccess
             string ConnectionString = "Data Source=DESKTOP-8BGVRA2;Integrated Security=True;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
             
             this.db = new (ConnectionString);
+            this.crud = new Crud();
 
         }
         public int Insert(UserTable table)

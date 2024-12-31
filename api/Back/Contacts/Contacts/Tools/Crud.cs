@@ -46,6 +46,7 @@ namespace Contacts.Tools
 
             return this.db.ExecuteScalar<int>(sql, model);
 
+
         }
 
      public bool UpdateById<T>(T model)
@@ -69,7 +70,7 @@ namespace Contacts.Tools
             }
             string csvEquals = string.Join(",", equals);
 
-            string sql = $"UPDATE  [Contact].[dbo].[{table}] SET ({csvEquals}) WHERE Id = @Id";
+            string sql = $"UPDATE [Contact].[dbo].[{table}] SET {string.Join(",", equals.Select(e => $"{e} = @{e}"))} WHERE Id = @Id";
 
             return this.db.ExecuteScalar<int>(sql, model)>0;
 
@@ -79,7 +80,7 @@ namespace Contacts.Tools
         {
             Type type = typeof(T);
             string table = type.Name.Replace("Table", "");
-            string sql = $"DELET FROM [Contact].[dbo].[{table}] WHER Id = @Id";
+            string sql = $"DELETE FROM [Contact].[dbo].[{table}] WHERE Id = @Id";
 
             return this.db.Execute(sql, new { Id = id }) > 0;
 

@@ -15,24 +15,17 @@ namespace Contacts
 
         static void Main(string[] args)
         {
-            //string imgdata = Convert.ToBase64String(File.ReadAllBytes("C:\\Users\\ZeroOneSystem\\Desktop\\Final Contacts Project\\api\\Prof.jpg"));
+            var builder = WebApplication.CreateBuilder(args);
 
-            //new UserB().Add(new UserSignInM()
-            //{
-            // FullName = "mehdi",
-            // ImgData = imgdata,
-            // Password = "2719",
-            // PasswordConfirm ="2719",
-            // UserName = "mahdi007@gmailcom",
-            //});
+            builder.Services.AddControllers();
 
-            //BResultM<int> result = new UserB().SignUP(new UserSignUPM()
-            //{
-            //    UserName = "mohammadrezakarimi@gmail.com",
-            //    Password = "2719"
-            //});
+            var app = builder.Build();
 
-            //BResultM<UserProfileM> result = new UserB().Profile(1002);
+            app.UseAuthorization();
+
+            app.MapControllers();
+
+            app.Run();
         }
     }
 }
