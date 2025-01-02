@@ -17,10 +17,22 @@ export class SignUpPageComponent{
     password: new FormControl('')
   });
   SignUp(){
+      this.signUpform.valid
+
       let request: SignUpModel = {
         username: this.signUpform.value.username as string,
         password: this.signUpform.value.password as string
       }
-    this.SignUpService.getSignUp(request).subscribe((data) => console.log(data));
+  this.SignUpService.getSignUp(request).subscribe({
+    next:(data) =>{ if(data.success){
+
+    }else{
+      alert(data.errorMessage)
+    }},
+    error: (error) => {
+
+    }
+    
+  });
   };
 }
