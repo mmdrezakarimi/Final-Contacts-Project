@@ -8,7 +8,7 @@ namespace Contacts.Instance.User
 {
     public class UserSignUPM
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     }
 }

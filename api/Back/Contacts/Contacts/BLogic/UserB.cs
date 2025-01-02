@@ -82,9 +82,9 @@ namespace Contacts.BLogic
 
         public BResultM<int> SignUpB(UserSignUPM model)
         {
-            byte[] password = MD5.HashData(Encoding.UTF8.GetBytes(model.Password));
+            byte[] password = MD5.HashData(Encoding.UTF8.GetBytes(model.password));
 
-            int id = new UserD().GetUserID(model.UserName, password);
+            int id = new UserD().GetUserID(model.username, password);
 
             if (id == 0)
             {

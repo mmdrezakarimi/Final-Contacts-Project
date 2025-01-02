@@ -17,12 +17,12 @@ namespace Contacts.Controller
             this.business = new UserB();
         }
         
-        [HttpPost("SignIn")]
+        [HttpPost("sign-in")]
         public BResultM<int> SignIn(UserSignInM model)
         {
             return this.business.SignInB(model);
         }
-        [HttpPost("SignUp")]
+        [HttpPost("sign-up")]
         public BResultM<int> SignUp(UserSignUPM model)
         {
             return this.business.SignUpB(model);

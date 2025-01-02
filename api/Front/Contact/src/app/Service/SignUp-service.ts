@@ -9,7 +9,7 @@ export class SignUpService
   constructor(private http: HttpClient)
   {}
     getSignUp(request: SignUpModel) {
-        let url = "http://localhost:50433/user/SignUp";
+        let url = "https://localhost:50433/user/sign-up";
         return this.http.post<BResultModel<Number>>(url, request);
     }
 } 
