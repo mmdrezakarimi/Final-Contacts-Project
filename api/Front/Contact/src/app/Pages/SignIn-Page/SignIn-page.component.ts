@@ -1,7 +1,7 @@
 import { SignInService } from './../../Service/SignIn-service';
 import { SignInModel } from '../../Model/SignInModel';
 import { Component } from "@angular/core";
-import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 
 @Component({
     imports: [ReactiveFormsModule],
@@ -12,12 +12,12 @@ import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 export class SignInPageComponent{
   constructor (private SignInService: SignInService){}
 
-  signInform = new FormGroup({
-    username: new FormControl(''),
+   signInform = new FormGroup({
+    username: new FormControl('', [Validators.required]),
     password: new FormControl('')
   });
   SignIn(){
-      this.signInform.valid
+      console.log(this.signInform.valid);
 
       let request: SignInModel = {
         username: this.signInform.value.username as string,
@@ -30,7 +30,6 @@ export class SignInPageComponent{
       alert(data.errorMessage)
     }},
     error: (error) => {
-
     }
     
   });
