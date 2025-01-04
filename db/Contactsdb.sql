@@ -51,13 +51,5 @@ Title VARCHAR(32) NOT NULL
 INSERT INTO dbo.GroupsType VALUES
 (1, 'Family'), (2, 'Work'), (3, 'Friends'), (4, 'Gym') ,(5,'Others');
 
-SELECT * FROM  dbo.Phone
 
 
-INSERT INTO dbo.[User](Username,Password,Fullname) VALUES ('mmd2719',CONVERT(BINARY(16), '55422500'),'Mohammadrezakarimi');
-
-INSERT INTO dbo.Contact(UserID,Fullname,EMail) VALUES (1000,'Mohammadrezakarimi','mohammadrezakarimi@gmail.com');
-INSERT INTO dbo.[User](Username,Password,Fullname) VALUES ('mehdi4452',CONVERT(BINARY(16), '362890'),'MehdiNjfi');
-INSERT INTO dbo.Contact(UserID,Fullname,EMail) VALUES (1001,'MehdiNjfi','mehdinjfi@gmail.com');
-INSERT INTO dbo.Phone(ContactID,PhoneTypeId,Number) VALUES (1002,3,'09184753968');
-INSERT INTO dbo.Phone(ContactID,PhoneTypeId,Number) VALUES (1003,3,'09184753968');

@@ -4,6 +4,7 @@ using Contacts.BLogic;
 using Contacts.Instance;
 using Contacts.Instance.Table;
 using Contacts.Instance.User;
+using Contacts.Tools;
 using Dapper;
 using Microsoft.Data.SqlClient;
 
@@ -20,7 +21,7 @@ namespace Contacts
             builder.Services.AddControllers();
 
             var app = builder.Build();
-            app.UseCors(x=>
+            app.UseCors(x =>
             {
                 x.AllowAnyHeader();
                 x.AllowAnyMethod();

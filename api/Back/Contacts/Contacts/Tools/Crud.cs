@@ -30,22 +30,21 @@ namespace Contacts.Tools
 
             foreach (PropertyInfo property in properties)
             {
-                if (property.Name == "id")
+                if (property.Name.Equals("ID", StringComparison.OrdinalIgnoreCase))
                 {
-                    OUTPUT = "OUTPUT INSERTED.ID";
-                    continue;
+                    continue; 
                 }
 
                 fields.Add($"[{property.Name}]");
                 parameters.Add($"@{property.Name}");
             }
+
             string csvFields = string.Join(",", fields);
             string csvParameters = string.Join(",", parameters);
 
             string sql = $"INSERT INTO [Contact].[dbo].[{table}] ({csvFields}) {OUTPUT} VALUES ({csvParameters})";
 
             return this.db.ExecuteScalar<int>(sql, model);
-
 
         }
 
@@ -78,6 +77,7 @@ namespace Contacts.Tools
 
      public bool DeleteById<T>(int id)
         {
+            //anjam nmishe b khatre Foreign Key
             Type type = typeof(T);
             string table = type.Name.Replace("Table", "");
             string sql = $"DELETE FROM [Contact].[dbo].[{table}] WHERE Id = @Id";
