@@ -2,6 +2,7 @@ import { SignInService } from './../../Service/SignIn-service';
 import { SignInModel } from '../../Model/SignInModel';
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
 
 @Component({
     imports: [ReactiveFormsModule],
@@ -10,7 +11,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angula
     styleUrl: './SignIn-page.component.css'
 })
 export class SignInPageComponent{
-  constructor (private SignInService: SignInService){}
+  constructor (private SignInService: SignInService, private router:Router){}
 
    signInform = new FormGroup({
     username: new FormControl(''),
@@ -23,11 +24,12 @@ export class SignInPageComponent{
         username: this.signInform.value.username as string,
         password: this.signInform.value.password as string
       }
-   this.SignInService.getSignIn(request).subscribe((data) => {
-     if(data.success){
- 
-     }else{
-       alert(data.errorMessage)
+   this.SignInService.PostSignIn(request).subscribe((response) => {
+     if(response.success){
+        sessionStorage.setItem('userid', response.data.toString())
+        this.router.navigate(['profile']);
+      }else{
+       alert(response.errorMessage)
      }
     });
   }

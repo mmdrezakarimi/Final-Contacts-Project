@@ -10,6 +10,6 @@ namespace Contacts.Instance.User
     {
         public string Username { get; set; }    
         public string FullName { get; set; }
-        public Byte[] Avatar { get; set; }
+        public string Avatar { get; set; }
     }
 }

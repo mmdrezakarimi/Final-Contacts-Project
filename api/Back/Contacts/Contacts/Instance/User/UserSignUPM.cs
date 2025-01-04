@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Contacts.Instance.User
 {
-    public class UserSignUPM
+    public class UserSignInM
     {
         public string username { get; set; }
         public string password { get; set; }
