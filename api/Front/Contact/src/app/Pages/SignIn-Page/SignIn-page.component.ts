@@ -13,7 +13,7 @@ export class SignInPageComponent{
   constructor (private SignInService: SignInService){}
 
    signInform = new FormGroup({
-    username: new FormControl('', [Validators.required]),
+    username: new FormControl(''),
     password: new FormControl('')
   });
   SignIn(){
@@ -23,15 +23,12 @@ export class SignInPageComponent{
         username: this.signInform.value.username as string,
         password: this.signInform.value.password as string
       }
-  this.SignInService.getSignIn(request).subscribe({
-    next:(data) =>{ if(data.success){
-
-    }else{
-      alert(data.errorMessage)
-    }},
-    error: (error) => {
-    }
-    
-  });
-  };
+   this.SignInService.getSignIn(request).subscribe((data) => {
+     if(data.success){
+ 
+     }else{
+       alert(data.errorMessage)
+     }
+    });
+  }
 }
