@@ -1,4 +1,4 @@
-import { SignInService } from './../../Service/SignIn-service';
+import { UserService } from '../../Service/User-service';
 import { SignInModel } from '../../Model/SignInModel';
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
     styleUrl: './SignIn-page.component.css'
 })
 export class SignInPageComponent{
-  constructor (private SignInService: SignInService, private router:Router){}
+  constructor (private UserService: UserService, private router:Router){}
 
    signInform = new FormGroup({
     username: new FormControl(''),
@@ -24,7 +24,7 @@ export class SignInPageComponent{
         username: this.signInform.value.username as string,
         password: this.signInform.value.password as string
       }
-   this.SignInService.PostSignIn(request).subscribe((response) => {
+   this.UserService.PostSignIn(request).subscribe((response) => {
      if(response.success){
         sessionStorage.setItem('userid', response.data.toString())
         this.router.navigate(['profile']);
